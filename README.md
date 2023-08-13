@@ -12,6 +12,7 @@
 Welcome to **StoryStudio**! 🌟 Here, we're reimagining the art of storytelling by blending human imagination with the power of cutting-edge AI. Dive into an innovative experimets where stories are not just read, but experienced.
 
 ## 🎥 Showcase ([Full video on YouTube](https://www.youtube.com/watch?v=NEp_huFPfa0))
+https://github.com/MIBlue119/storystudio/assets/9137836/f0d37318-0760-49c3-9969-3591a1c62fe6
 
 ## ✨ How does it work?
 
