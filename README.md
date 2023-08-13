@@ -1,4 +1,11 @@
 # 🎬 StoryStudio - Your Personalized Storytelling Studio 📖
+<p align="center">
+• 🐦 <a href="https://twitter.com/miblue119" target="_blank">Twitter</a>  
+• 👨️ <a href="https://miblue119.github.io/" target="_blank">Weiren Lan</a> 
+    <br/><br/>
+    <img src="./assets/logo.png" width="100"> <br/>
+
+</p>
 
 ## Table of Contents
 - [Introduction](#-storystudio---your-personalized-storytelling-studio-)
