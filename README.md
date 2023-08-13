@@ -75,6 +75,7 @@ $ poetry install
 ```
 $poetry run python storystudio/generate.py
 ```
+![cli](./assets/cli.jpg)
 
 ### Use at python
 ```
