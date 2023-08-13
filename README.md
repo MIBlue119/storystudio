@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Introduction](#-storystudio---your-personalized-storytelling-studio-)
+- [Showcase](#🎥-showcase-full-video-on-youtube)
 - [How does it work?](#-how-does-it-work)
 - [Flows of storystudio](#-flows-of-storystudio)
 - [Installation](#installation)
@@ -10,6 +11,8 @@
 ---
 Welcome to **StoryStudio**! 🌟 Here, we're reimagining the art of storytelling by blending human imagination with the power of cutting-edge AI. Dive into an innovative experimets where stories are not just read, but experienced.
 
+## 🎥 Showcase ([Full video on YouTube](https://www.youtube.com/watch?v=NEp_huFPfa0))
+https://github.com/RayVentura/ShortGPT/assets/demo.mp4
 ## ✨ How does it work?
 
 Ever thought about turning a simple topic or idea into a mesmerizing story, complete with visuals, voice narration, and music? That's exactly what StoryStudio promises!
