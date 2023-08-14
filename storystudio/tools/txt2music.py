@@ -13,6 +13,8 @@ os.environ["REPLICATE_API_TOKEN"] = app_settings.REPLICATE_API_TOKEN
 def generate_music(music_prompt, output_path=None, duration=20, output_format="mp3"):
     # Call replicate music generation API
     # Currently, the model supports 3 versions: large, melody
+    # stip the music prompt `\n`
+    music_prompt = music_prompt.replace("\n", "")
     input_settings = {
         "model_version": "large",
         "prompt": music_prompt,

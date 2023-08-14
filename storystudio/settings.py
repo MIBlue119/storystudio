@@ -1,6 +1,6 @@
 from typing import List
 
-from pydantic import Field,BaseModel
+from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
 # Define every function's LLM settings
@@ -29,13 +29,17 @@ TASK_MODEL_MAPPING = {
         "model": "gpt-3.5-turbo-16k",
         "max_tokens": 9000,
     },
-    "design_music": {
+    "design_shots_music": {
+        "model": "gpt-4",
+        "max_tokens": 5000,
+    },
+    "design_single_shot_music": {
         "model": "gpt-4",
         "max_tokens": 5000,
     },
 }
 
-APP_LOGO="""\
+APP_LOGO = """\
 
 
   .-')     .-') _                  _  .-')                        .-')     .-') _                  _ .-') _                          
@@ -50,6 +54,7 @@ APP_LOGO="""\
 
 """
 
+
 class ClI_CONFIG(BaseModel):
     APP_LOGO: str = APP_LOGO
 
@@ -61,8 +66,8 @@ class Base(BaseSettings):
     REPLICATE_API_TOKEN: str = Field("", env="REPLICATE_API_TOKEN")
     STABILITY_KEY: str = Field("", env="STABILITY_KEY")
 
-    WORKSPACE:str=Field("./workspace", env="WORKSPACE")
-    ClI_CONFIG: ClI_CONFIG=ClI_CONFIG()
+    WORKSPACE: str = Field("./workspace", env="WORKSPACE")
+    ClI_CONFIG: ClI_CONFIG = ClI_CONFIG()
 
     class Config:
         env_file = ".env"

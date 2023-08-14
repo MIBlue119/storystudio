@@ -4,19 +4,26 @@ from pathlib import Path
 
 from loguru import logger
 
-from storystudio.actions import (design_music, design_scene, design_voice,
+from storystudio.actions import (design_scene, design_shots_music,
+                                 design_single_shot_music, design_voice,
                                  select_voice, write_shots_detail,
                                  write_shots_tldr,
                                  write_story_and_characters_intro)
+from storystudio.settings import app_settings
 from storystudio.tools import (caption, postprocess, stt, txt2image, txt2music,
                                txt2voice)
-from storystudio.settings import app_settings
 
-class Studio():
+
+class Studio:
     app_settings = app_settings
-    def __init__(self,default_seed_story=None):
+
+    def __init__(self, default_seed_story=None):
         self.workspace = app_settings.WORKSPACE
-        self.default_seed_story = default_seed_story if default_seed_story else "HarryPotter is transferred to Naruto's World."
+        self.default_seed_story = (
+            default_seed_story
+            if default_seed_story
+            else "HarryPotter is transferred to Naruto's World."
+        )
 
     def _construct_new_export_dir(self, export_dir=None):
         if export_dir is None:
@@ -24,22 +31,23 @@ class Studio():
             self.export_dir = Path(f"./workspace/{timestamp}").resolve()
         else:
             self.export_dir = Path(export_dir).resolve()
-        os.makedirs(self.export_dir , exist_ok=True) 
+        os.makedirs(self.export_dir, exist_ok=True)
 
-    
     def cli(self):
         """Ask user the seed story content"""
-        print("="*100)
+        print("=" * 100)
         print(self.app_settings.ClI_CONFIG.APP_LOGO)
-        print('-'*80)
+        print("-" * 80)
         print("Happy Generating!")
-        seed_story=''
+        seed_story = ""
         while True:
-            seed_story = input(f"Please Enter Your Seed Story (press 'g' for default seed story '{self.default_seed_story}'):")
-            if seed_story == 'g':
+            seed_story = input(
+                f"Please Enter Your Seed Story (press 'g' for default seed story '{self.default_seed_story}'):"
+            )
+            if seed_story == "g":
                 seed_story = self.default_seed_story
                 logger.info(f"Using default seed story: {seed_story}")
-            if seed_story !='':
+            if seed_story != "":
                 self.run(seed_story)
 
     def run(self, seed_story=None, export_dir=None):
@@ -99,7 +107,15 @@ class Studio():
         txt2voice.generate_scene_voice(shots_voice_detail, voice_output_dir)
 
         # Generate music prompt
-        music_prompt = design_music.design_music_prompt(shots_detail)
+        music_prompt = {"music_prompt": {}}
+        for key, value in shots_detail["shots_content"].items():
+            shots_name = key
+            shots_content_detail = value["detail_script"]
+            music_prompt["music_prompt"][
+                shots_name
+            ] = design_single_shot_music.design_single_shot_music_prompt(
+                shots_content_detail
+            )
         logger.info(music_prompt)
 
         # Save music prompt to json
@@ -122,7 +138,7 @@ class Studio():
             music_output_dir,
             video_output_dir,
             voice_to_text_output_dir,
-        )        
+        )
 
 
 if __name__ == "__main__":

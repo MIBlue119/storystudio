@@ -59,7 +59,7 @@ def get_output_keys():
 
 
 @log_io
-def design_music_prompt(shots_detail, retry_count=0, max_retry=3):
+def design_shots_music_prompt(shots_detail, retry_count=0, max_retry=3):
     if retry_count < max_retry:
         try:
             retry_count += 1
@@ -67,14 +67,14 @@ def design_music_prompt(shots_detail, retry_count=0, max_retry=3):
             logger.info(f"Debug: music_prompt_prompt={music_prompt_prompt}")
             response = generate(
                 music_prompt_prompt,
-                model=TASK_MODEL_MAPPING["design_music"]["model"],
-                max_tokens=TASK_MODEL_MAPPING["design_music"]["max_tokens"],
+                model=TASK_MODEL_MAPPING["design_shots_music"]["model"],
+                max_tokens=TASK_MODEL_MAPPING["design_shots_music"]["max_tokens"],
             )
             music_prompt_output_keys = get_output_keys()
             music_prompt = parse_output(response, music_prompt_output_keys)
             return music_prompt
         except Exception as e:
-            return design_music_prompt(shots_detail, retry_count, max_retry)
+            return design_shots_music_prompt(shots_detail, retry_count, max_retry)
     else:
         logger.error(f"generate scene prompt attempt {max_retry}")
         raise Exception("generate scene prompt failed")
