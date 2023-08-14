@@ -29,7 +29,7 @@ TASK_MODEL_MAPPING = {
         "model": "gpt-3.5-turbo-16k",
         "max_tokens": 9000,
     },
-    "design_music": {
+    "design_shots_music": {
         "model": "gpt-4",
         "max_tokens": 5000,
     },

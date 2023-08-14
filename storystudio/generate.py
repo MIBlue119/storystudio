@@ -4,7 +4,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from storystudio.actions import (design_music, design_scene, design_voice,
+from storystudio.actions import (design_shots_music, design_scene, design_voice,
                                  select_voice, write_shots_detail,
                                  write_shots_tldr,
                                  write_story_and_characters_intro)
@@ -99,7 +99,7 @@ class Studio():
         txt2voice.generate_scene_voice(shots_voice_detail, voice_output_dir)
 
         # Generate music prompt
-        music_prompt = design_music.design_music_prompt(shots_detail)
+        music_prompt = design_shots_music.design_shots_music_prompt(shots_detail)
         logger.info(music_prompt)
 
         # Save music prompt to json
